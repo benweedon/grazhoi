@@ -1,0 +1,16 @@
+sudo: required
+dist: trusty
+before_install:
+- sudo apt-get -qq update && sudo apt-get install -y --no-install-recommends texlive-full
+script:
+- mkdir _build
+- pdflatex -interaction=nonstopmode -halt-on-error -output-directory _build -jobname grazhoi main.tex
+deploy:
+  provider: pages
+  github_token:
+    secure: aylzmN95PQxOTcavjFhbSRyIFYGXVw76S0fq9svbKEuBWj3i6lVsvy4HKPNMgui95R1mdd7hNU7/5efW04XL+qNzlRck//9OqTbnaw36TnbgsQa69TPhsTxi6O6VVzXBc+4NaT3wuanZ9xdrUK4oskoGCd52+5iNQV7dRM4oG9dooIKUDZVSk4ZWUYuRYhiruIswaolk4pSAvk/ivHaaopffus7OxTv8xJTqbjWR2LLaUqTqhZ3NmNkdvSGPvmx23ARExfcq87lnzt5fs9GlVZ87TLWv3R1BMpPOIUk/hPr0BAYNB1XYeba4PIQaO/PCgykiFRE6zRYadvhjBe9O3Ri/OoHJ65XZYjSSVvJkzwqIilLrm5tsxiCkh4gH+qJpPDEZrbqLB+IMkyrTDzJLth3X8zL6mQgfCgzAz/bmgezTS8/BLEbz/iut2RNbQiEGjNsxXZDLAgH1+ppsBNVNZbH+zef518FgbKmYadw0Rhnsth0dSr3n/ime7HFCYgdD5uMh5myIxTUEKDZjbzEQPmJFKj4pKXOATTFqNg7WZiaJdcsGoccOUEfzgzl8gKKZrKPkegktOnBLcUNeuKcnXKQUwLqVKJOg+PR+VuVD0+w4PodsN8q6Yn+6kfGCYQUszH2Vj/INSv1jPPgQE9kXzm6c586iDxD7Re+hPd9T8Ps=
+  local_dir: _build
+  skip_cleanup: true
+  on:
+    repo: benweedon/grazhoi
+    branch: master
