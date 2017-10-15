@@ -1,10 +1,9 @@
 sudo: required
 dist: trusty
-before_install:
-- sudo apt-get -qq update && sudo apt-get install -y --no-install-recommends texlive-full
-script:
-- mkdir _build
-- pdflatex -interaction=nonstopmode -halt-on-error -output-directory _build -jobname grazhoi main.tex
+language: python
+python: '3.6'
+install: chmod +x install_deps.sh && ./install_deps.sh
+script: mkdir _build && make
 deploy:
   provider: pages
   github_token:

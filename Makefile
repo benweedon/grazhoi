@@ -1,0 +1,14 @@
+build: *.md
+	pandoc -o _build/grazhoi.pdf --filter linguafilter\
+		grazhoi.md\
+		introduction.md\
+		phonology.md\
+		morphology.md\
+		syntax.md\
+		semantics.md\
+		pragmatics.md\
+		writing.md\
+		examples.md\
+		lexicon.md\
+
+.PHONY: build
